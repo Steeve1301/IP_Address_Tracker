@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+</head>
+<body>
+
+  <header>
+    <h1>IP Address Tracker</h1>
+    <div class="inline">
+      <input id="ip" class="search" placeholder="Search for any IP address or domain" />
+      <button type="button" id="search">
+        >
+      </button>
+    </div>
+  </header>
+
+  <div class="result">
+    <div>
+      <h5>IP Address</h5>
+      <p class="ip_address"></p>
+    </div>
+    <span class="result_divider"></span>
+    <div>
+      <h5>Location</h5>
+      <p class="location"></p>
+    </div>
+    <span class="result_divider"></span>
+    <div>
+      <h5>Timezone</h5>
+      <p class="timezone"></p>
+    </div>
+    <span class="result_divider"></span>
+    <div>
+      <h5>ISP</h5>
+      <p class="isp"></p>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RlZXZlMTMwMSIsImEiOiJja216YTBieDYwYnJnMnNwZnc0bWVyd3ZkIn0.984jFKUOPD5pxoHxepMj9w';
+    let map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+    });
+
+    function setIp(ip) {
+      let url = 'https://geo.ipify.org/api/v1?apiKey=at_PVAT3dYp7GRrT73aJ2fgxavGMQNPI&ipAddress=' + ip;
+      fetch(url)
+              .then(data => {return data.json()})
+              .then(res => {
+                document.querySelector('.ip_address').innerHTML = res.ip ;
+                document.querySelector('.location').innerHTML = res.location.country ;
+                document.querySelector('.timezone').innerHTML = res.location.timezone + ' UTC';
+                document.querySelector('.isp').innerHTML = res.isp ;
+                map.flyTo({center:[res.location.lng, res.location.lat]});
+              })
+    }
+
+    setIp('8.8.8.8');
+
+    document.querySelector('#search').addEventListener('click', function() {
+      setIp(this.value);
+    });
+
+
+  </script>
+</body>
+</html>

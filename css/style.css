@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url("../fonts/Rubik-Black.ttf");
+}
+@font-face {
+    font-family: 'Rubik';
+    font-weight: bold;
+    src: url("../fonts/Rubik-Bold.ttf");
+}
+body {
+    font-family: Rubik, sans-serif;
+}
+header {
+    background: url("../images/pattern-bg.png") center no-repeat;
+    background-size: cover;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+header h1 {
+    margin-top: 5vh;
+    color:white;
+}
+header .inline {
+    flex-direction: row;
+}
+header .inline button{
+    background: hsl(0, 0%, 17%);
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 0 15px 15px 0;
+    margin-left: -5px;
+}
+header .inline button:focus {
+    outline: none;
+}
+header .inline button:hover {
+    background: cornflowerblue;
+    cursor: grab;
+}
+header .search {
+    margin-top: 30px;
+    padding: 10px 15px;
+    width: 27vw;
+    border-radius: 15px 0 0 15px;
+    border: none;
+}
+header .search:focus {
+    outline: none;
+}
+
+.result {
+    position: absolute;
+    margin: auto;
+    top: 25vh;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    max-width: 50vw;
+    background: #fff;
+    border-radius: 15px;
+    z-index: 10000;
+    padding: 20px 20px;
+}
+.result div {
+    flex-direction: column;
+    flex-basis: 25%;
+}
+
+.result div p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.result .result_divider {
+    border-right: 1px solid hsl(0, 0%, 59%);
+    margin: 20px 20px;
+}
+
+.result div h5 {
+    color: #8c8c8c;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+#map {
+    width: 100%;
+    height: 65vh;
+}
+
+@media only screen and (max-width: 1000px) {
+    .result {
+        height: 27vh;
+        max-width: 70vw;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -3vh;
+        padding: 40px 40px;
+    }
+    header .search {
+        width: 40vw;
+    }
+    .result div:not(:first-child) {
+        text-align: center;
+        line-height: 1em;
+        margin-top: -30px;
+    }
+}
