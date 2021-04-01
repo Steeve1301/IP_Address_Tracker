@@ -100,7 +100,7 @@ header .search:focus {
         flex-direction: column;
         align-items: center;
         margin-top: -3vh;
-        padding: 40px 40px;
+        padding: 40px 45px;
     }
     header .search {
         width: 40vw;
