@@ -50,17 +50,14 @@ header .search {
     width: 27vw;
     border-radius: 15px 0 0 15px;
     border: none;
+    margin-bottom: 50px;
 }
 header .search:focus {
     outline: none;
 }
 
 .result {
-    position: absolute;
     margin: auto;
-    top: 25vh;
-    left: 0;
-    right: 0;
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -99,7 +96,7 @@ header .search:focus {
 @media only screen and (max-width: 1000px) {
     .result {
         height: 27vh;
-        max-width: 70vw;
+        width: 70vw;
         flex-direction: column;
         align-items: center;
         margin-top: -3vh;
